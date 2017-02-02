@@ -101,7 +101,7 @@
   var CONFIG = {
     root: '/',
     scheme: 'Muse',
-    sidebar: {"position":"left","display":"post"},
+    sidebar: {"position":"left","display":"always"},
     fancybox: true,
     motion: true,
     duoshuo: {
@@ -672,6 +672,7 @@
           <h2 id="2017-2-2"><a href="#2017-2-2" class="headerlink" title="2017/2/2"></a><font color=#00BFFF>2017/2/2</font></h2><p>添加了Mathjax支持:<br>修改主题的<code>_config.yml</code>中<code>mathjax.enable</code>和<code>mathjax.per_page</code>选项为<code>true</code>。然后只要在需要Mathjax的page前手动添加<code>mathjax: true</code><br>注意：由于markdown格式下<code>_</code>会被默认转义为斜体，<code>\</code>为转义符，所以在公式中，需要用到这两个特殊符号时要在前面加<code>\</code><br>但这种手动escape的方式有通用性差的缺点，不能直接移植到非Markdown的环境。</p>
 <p>嗯……然后我直接把Markdown渲染引擎换成了hexo-renderer-kramed。如果要插入行内公式，只要写在<code>这里</code>，就可以完全按照Mathjax的格式来写。</p>
 <p>顺便更新了域名。</p>
+<p>然后发现更换域名之后统计阅读次数的功能失效了……</p>
           <!--noindex-->
           <div class="post-more-link text-center">
             <a class="btn" href="/2016/12/30/blog_history/#more" rel="contents">
@@ -949,7 +950,7 @@
 
   
   <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
-  <script>AV.initialize("Dncjt8dYEUhu6b4GLaRp2pgt-gzGzoHsz", "FcgcFE3riB6EdFUarTA7E62G");</script>
+  <script>AV.initialize("e593fu63sKu0J38TogF8Dsbi-gzGzoHsz", "7xOAvxlJPoYU8aGTL3cVgFzK");</script>
   <script>
     function showTime(Counter) {
       var query = new AV.Query(Counter);
