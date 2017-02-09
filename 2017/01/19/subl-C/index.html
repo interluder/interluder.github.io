@@ -90,7 +90,7 @@
 <meta property="og:url" content="http://interluder.github.io/2017/01/19/subl-C/index.html">
 <meta property="og:site_name" content="El Camino">
 <meta property="og:description" content="Sublime Text is a sophisticated text editor for code, markup and prose.You’ll love the slick user interface, extraordinary features and amazing performance.">
-<meta property="og:updated_time" content="2017-02-01T07:23:59.427Z">
+<meta property="og:updated_time" content="2017-02-04T09:57:32.861Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="关于Sublime Text中C编译环境的搭建">
 <meta name="twitter:description" content="Sublime Text is a sophisticated text editor for code, markup and prose.You’ll love the slick user interface, extraordinary features and amazing performance.">
@@ -379,22 +379,8 @@ compilation terminated.
 <hr>
 <h1 id="Build-System-in-Sublime-Text"><a href="#Build-System-in-Sublime-Text" class="headerlink" title="Build System in Sublime Text"></a>Build System in Sublime Text</h1><p>事实上，sublime text中有对C++的自带的编译系统。如果之前添加到环境变量的目录中还有g++.exe，那么sublime text中默认的C++编译系统就可以正常工作了。但是这个系统有一个弊端：那就是它只能将程序的输出捕获并显示出来，而不能输入信息（比如执行到含有scanf的语句时）。</p>
 <p>解决方案：<br>如果要编译运行含输入的C，可以调用一个新的cmd窗口，直接在cmd进行输入输出。</p>
-<p>那么如何调用cmd呢？这就要用到Sublime Text的Build System了。<br>在打造自己的Build System之前，不妨先看一下默认的“C++ Single File”是怎么写的。</p>
-<pre><code>{
-    &quot;shell_cmd&quot;: &quot;g++ \&quot;${file}\&quot; -o \&quot;${file_path}/${file_base_name}\&quot;&quot;,
-    &quot;file_regex&quot;: &quot;^(..[^:]*):([0-9]+):?([0-9]+)?:? (.*)$&quot;,
-    &quot;working_dir&quot;: &quot;${file_path}&quot;,
-    &quot;selector&quot;: &quot;source.c, source.c++&quot;,
-
-    &quot;variants&quot;:
-    [
-        {
-            &quot;name&quot;: &quot;Run&quot;,
-            &quot;shell_cmd&quot;: &quot;g++ \&quot;${file}\&quot; -o \&quot;${file_path}/${file_base_name}\&quot; &amp;&amp; \&quot;${file_path}/${file_base_name}\&quot;&quot;
-        }
-    ]
-}
-</code></pre><p>嗯……看来有必要再花一点点时间了解一下这些JSON格式的配置文件内容究竟代表什么意思了。</p>
+<p>那么如何调用cmd呢？这就要用到Sublime Text的Build System了。<br>在打造自己的Build System之前，不妨先看一下默认的“C++ Single File”是怎么写的。<br><figure class="highlight xquery"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">	<span class="string">"shell_cmd"</span>: <span class="string">"g++ \"</span>$&#123;file&#125;\<span class="string">" -o \"</span>$&#123;file_path&#125;/$&#123;file_base_name&#125;\<span class="string">""</span>,</div><div class="line">	<span class="string">"file_regex"</span>: <span class="string">"^(..[^:]*):([0-9]+):?([0-9]+)?:? (.*)$"</span>,</div><div class="line">	<span class="string">"working_dir"</span>: <span class="string">"$&#123;file_path&#125;"</span>,</div><div class="line">	<span class="string">"selector"</span>: <span class="string">"source.c, source.c++"</span>,</div><div class="line"></div><div class="line">	<span class="string">"variants"</span>:</div><div class="line">	[</div><div class="line">		&#123;</div><div class="line">			<span class="string">"name"</span>: <span class="string">"Run"</span>,</div><div class="line">			<span class="string">"shell_cmd"</span>: <span class="string">"g++ \"</span>$&#123;file&#125;\<span class="string">" -o \"</span>$&#123;file_path&#125;/$&#123;file_base_name&#125;\<span class="string">" &amp;&amp; \"</span>$&#123;file_path&#125;/$&#123;file_base_name&#125;\<span class="string">""</span></div><div class="line">		&#125;</div><div class="line">	]</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>嗯……看来有必要再花一点点时间了解一下这些JSON格式的配置文件内容究竟代表什么意思了。</p>
 <blockquote>
 <p><code>cmd</code>： 包含运行指令及其所需参数的数组。如果没有指定绝对路径，它会在你的系统环境变量PATH中搜索所需外部程序。如果<code>shell_cmd</code>未被使用，则需要使用<code>cmd</code>；若<code>shell_cmd</code>已被使用，则被其覆盖（override）。</p>
 <p><code>shell</code>： 可选。若选项为<code>true</code>，cmd将通过shell（cmd.exe, bash…）运行。如果使用了<code>shell_cmd</code>，这个选项将没有作用。</p>
