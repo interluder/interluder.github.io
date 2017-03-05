@@ -91,7 +91,7 @@
 <meta property="og:site_name" content="El Camino">
 <meta property="og:description" content="“数字系统设计”大概是我这学期最重要的一门课了……同时目测也是大学生涯最重要的专业课之一。我将在接下来的数周里逐渐更新有关数字系统设计的文章，作为某种学习记录。由于是初学，内容应该会相当浅显。如果有错误，欢迎指正。（然而评论区似乎还没开orz，也可以通过sidebar里的链接联系我）">
 <meta property="og:image" content="https://raw.githubusercontent.com/interluder/interluder.github.io/master/DL/fig1.png">
-<meta property="og:updated_time" content="2017-03-05T04:02:45.828Z">
+<meta property="og:updated_time" content="2017-03-05T12:34:05.832Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="[DC]Introduction to Microprocessor Design">
 <meta name="twitter:description" content="“数字系统设计”大概是我这学期最重要的一门课了……同时目测也是大学生涯最重要的专业课之一。我将在接下来的数周里逐渐更新有关数字系统设计的文章，作为某种学习记录。由于是初学，内容应该会相当浅显。如果有错误，欢迎指正。（然而评论区似乎还没开orz，也可以通过sidebar里的链接联系我）">
@@ -361,7 +361,7 @@
 </blockquote>
 <p>再进一步说，这些门都可以由晶体管（transister）组建起来。晶体管可以暂且理解为一种具有两种稳态的电子元件：接通或者不接通（on and off）。而我们的惯例是，用1和0来表示这两种状态。这就是数字电路最最底层的部分了。</p>
 <h2 id="Design-Abstraction-Levels"><a href="#Design-Abstraction-Levels" class="headerlink" title="Design Abstraction Levels"></a>Design Abstraction Levels</h2><p>由于数字电路有这些不同的层级，我们在设计数字电路的时候也就可以从不同的层级着手。值得一提的是，实现某种特等功能的电路可以有各种不同的设计方法，而不同的实现方法则会在尺寸、运行速度、成本上有所差异。这也是设计电路的过程中应该考虑的因素。<br>最宏观的层级是Behavioral Level，我们可以使用硬件描述语言（HDL）来从行为层面上描述我们需要的电路。这个过程和用C语言码代码十分相似。标准的HDL有两种，Verilog和VHDL，这里不做具体介绍。</p>
-<p>底层一点，我们也可以从Gate Level来设计电路。我们可以通过画电路图（schematic）来展示门与门之间是如何互联的。当然，相同功能的电路也会有不同的画法，而不同的门电路有不同的延迟（delay, including <script type="math/tex">t_pd</script> &amp; <script type="math/tex">t_cd</script>），因此门与门之间不同的连接方式也会导致性能上的差异。此外，我们也可以用真值表（truth table）或者布尔方程（Boolean equation）来描述电路。真值表是对所有可能情况的穷举，而布尔表达式则是抽象的数学表达。这两种表述方式其实是等价的。布尔方程可以通过布尔代数的运算法则进行化简，但是当变量数目比较大的时候，手动化简便会非常麻烦。这时我们可以借助卡诺图（Karnaugh Map）来帮忙化简。</p>
+<p>底层一点，我们也可以从Gate Level来设计电路。我们可以通过画电路图（schematic）来展示门与门之间是如何互联的。当然，相同功能的电路也会有不同的画法，而不同的门电路有不同的延迟（delay, including <script type="math/tex">t_pd</script> &amp; <script type="math/tex">t_cd</script>），因此门与门之间不同的连接方式也会导致性能上的差异。此外，我们也可以用真值表（truth table）或者布尔方程（Boolean equation）来描述电路。真值表是对所有可能情况的穷举，而布尔表达式则是抽象的数学表达。这两种表述方式其实是等价的。布尔方程可以通过布尔代数的运算法则进行化简，但是当变量数目比较大的时候，手动化简便会非常麻烦。这时我们可以借助卡诺图（Karnaugh Map）来帮忙化简。但卡诺图在变量较多时依然会变得十分麻烦。事实上，计算机化简布尔方程时使用的方法并不是画卡诺图，而是奎因－麦克拉斯基算法（the Quine-McCluskey or tabulation method）。这种算法可以应付变量较多的布尔方程。</p>
 <p>再底层一点，我们也可以从Transister Level来设计电路。晶体管有PMOS和NMOS，它们两侧的不同电压会引起不同的导通性，因此也可以看作开关。其设计思路和Gate Level类似。</p>
 <hr>
 <p>note:</p>
